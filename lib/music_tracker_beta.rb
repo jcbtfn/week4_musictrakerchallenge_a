@@ -4,7 +4,7 @@ class MusicTrackerb
         @playlist_all = []
     end
 
-    def addtrack (track)
+    def addtrack(track)
         fail "No track found." unless (track != "")
         return @playlist_all << track
     end
@@ -19,7 +19,3 @@ class MusicTrackerb
     attr_reader :playlist_all
 
 end
-
-# cosamusical = MusicTrackerb.new
-# cosamusical.addtrack("Lluvia - Eddie Santiago")
-# cosamusical.tracklist_history
