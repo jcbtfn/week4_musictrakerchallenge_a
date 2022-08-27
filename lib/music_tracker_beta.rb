@@ -16,4 +16,10 @@ class MusicTrackerb
         return @playlist_all
     end
 
+    attr_reader :playlist_all
+
 end
+
+# cosamusical = MusicTrackerb.new
+# cosamusical.addtrack("Lluvia - Eddie Santiago")
+# cosamusical.tracklist_history

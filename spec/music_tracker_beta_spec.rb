@@ -1,53 +1,45 @@
 require "music_tracker_beta"
 
-RSpec.describe "Music Tracker Beta class and methods" do
-    context "We need to create an initialize the object and the class first" do
-        music_session = MusicTrackerb.new()
+RSpec.describe MusicTrackerb do
 
-        it "returns an error message when input is empty" do
+    context "Testing the Class with empty values" do
+        music_session = MusicTrackerb.new
+        it "#When input is empty it returns an error message" do
             expect{music_session.addtrack("")}.to raise_error ("No track found.")
         end
-
-        it "returns an error message when tracklist is empty" do
-            expect(music_session.tracklist_history).to eq "No playlist saved."
+        it "#When tracklist is empty it returns an error message" do
+            expect{music_session.tracklist_history}.to raise_error ("No playlist saved.")
         end
-
-        it "adds the track to the list when is a string containing text, example: Forest Swords - Crow" do
+    end
+    context "Testing add method" do
+        music_session = MusicTrackerb.new
+        it "#When calling method add passing a song (string arg) it adds it to a the list - Forest Swords - Crow" do
             music_session.addtrack("Forest Swords - Crow")
-            expect(music_session.tracklist_history[0]).to eq "Forest Swords - Crow"
+            expect(music_session.playlist_all[0]).to eq "Forest Swords - Crow"
         end
 
-        it "returns the tracklist with the new track" do
+        it "#When calling method 'add' passing a song (string arg) it adds it to a the list - Sinner DC - They Never Stay" do
+            music_session.addtrack("Sinner DC - They Never Stay")
+            expect(music_session.playlist_all[1]).to eq "Sinner DC - They Never Stay"
+        end
+    end
+    context "Testing tracklist_history method" do
+        music_session = MusicTrackerb.new
+        music_session.addtrack("Forest Swords - Crow")
+        it "#When we call function tracklist_history, it returns us the list of songs added previously" do
             expect(music_session.tracklist_history).to eq (["Forest Swords - Crow"])
         end
-
-        it "adds the track to the list when is a string containing text, example: Sinner DC - They Never Stay" do
+        it "#When a new track is added the method returns us the list updated" do
             music_session.addtrack("Sinner DC - They Never Stay")
-            expect(music_session.tracklist_history[1]).to eq "Sinner DC - They Never Stay"
-        end
-
-        it "returns the tracklist with the new track" do
             expect(music_session.tracklist_history).to eq (["Forest Swords - Crow", "Sinner DC - They Never Stay"])
         end
-
-        it "adds some more tracks to the list when is a string containing text, example: Benny Benassi - Satisfaction" do
-            music_session.addtrack("Benny Benassi - Satisfaction")
-            expect(music_session.tracklist_history[2]).to eq "Benny Benassi - Satisfaction"
+        it "#When adding multilple tracks, the method returns the updated list" do
+            ["Benny Benassi - Satisfaction", "Lorn - Anvil","Moby - Porcelain", "Woodkid - Iron"].each do |track|
+                music_session.addtrack(track)
+            end
+            expect(music_session.tracklist_history).to eq (["Forest Swords - Crow", "Sinner DC - They Never Stay", 
+                                                            "Benny Benassi - Satisfaction", "Lorn - Anvil", 
+                                                            "Moby - Porcelain", "Woodkid - Iron"])
         end
-
-        it "adds some more tracks to the list when is a string containing text, example: Lorn - Anvil" do
-            music_session.addtrack("Lorn - Anvil")
-            expect(music_session.tracklist_history[3]).to eq "Lorn - Anvil"
-        end
-
-        it "adds some more tracks to the list when is a string containing text, example: Lorn - Anvil" do
-            music_session.addtrack("Moby - Porcelain")
-            expect(music_session.tracklist_history[4]).to eq "Moby - Porcelain"
-        end
-
-        it "returns the tracklist with the new track" do
-            expect(music_session.tracklist_history).to eq (["Forest Swords - Crow", "Sinner DC - They Never Stay", "Benny Benassi - Satisfaction", "Lorn - Anvil", "Moby - Porcelain"])
-        end
-
     end
 end
