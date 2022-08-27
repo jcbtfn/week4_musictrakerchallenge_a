@@ -5,7 +5,7 @@ class MusicTrackerb
     end
 
     def addtrack(track)
-        fail "No track found." unless (track != "")
+        fail "No track found." unless (track != "") #" ", nil, null
         return @playlist_all << track
     end
 

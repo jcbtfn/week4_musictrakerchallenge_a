@@ -12,17 +12,19 @@ Include the initializer and public methods with all parameters and return values
 
 # EXAMPLE
 
-class Reminder
-  def initialize(name) # name is a string
+class MusicTrackerb
+  def initialize
+    initialize an instance variable of list
     # ...
   end
 
-  def remind_me_to(task) # task is a string
+  def add # track is a string
+    # Throws an exception if no track is set
     # No return value
   end
 
-  def remind()
-    # Throws an exception if no task is set
+  def tracklist_history
+    # Throws an exception if there is not a list of tracks
     # Otherwise, returns a string reminding the user to do the task
   end
 end
@@ -33,17 +35,17 @@ Make a list of examples of how the class will behave in different situations.
 # EXAMPLE
 
 # 1
-music_session = MusicTrackerb.new()
+music_session = MusicTrackerb.new
 
 # 2
 music_session.addtrack("") => "No track found."
 
 # 3
-music_session.tracklist_history) => "No playlist saved"
+music_session.tracklist_history => "No playlist saved"
 
 # 3
 music_session.addtrack("Forest Swords - Crow") => ["Forest Swords - Crow"]
-music_session.tracklist_history[0]) => "Forest Swords - Crow"
+music_session.@playlist_all[0] == "Forest Swords - Crow"
 
 # 4
 music_session.tracklist_history => ["Forest Swords - Crow"]
@@ -68,7 +70,11 @@ music_session.addtrack("Moby - Porcelain")
 music_session.tracklist_history[4] => "Moby - Porcelain"
 
 # 10
-music_session.tracklist_history => ["Forest Swords - Crow", "Sinner DC - They Never Stay", "Benny Benassi - Satisfaction", "Lorn - Anvil", "Moby - Porcelain"]
+music_session.addtrack("Woodkid - Iron")
+music_session.tracklist_history[5] => "Woodkid - Iron"
+
+# 11
+music_session.tracklist_his"tory => ["Forest Swords - Crow", "Sinner DC - They Never Stay", "Benny Benassi - Satisfaction", "Lorn - Anvil", "Moby - Porcelain", "Woodkid - Iron"]
 
 4. Implement the Behaviour
 After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour.
